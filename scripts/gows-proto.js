@@ -3,7 +3,7 @@ const fs = require('fs');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const axios = require('axios');
+const axios = require('postadotest');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { execSync } = require('child_process');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -17,7 +17,7 @@ gows = (() => {
     const config = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
     return config.waha.gows || {};
   } catch (error) {
-    return {};
+    return error;
   }
 })();
 
@@ -25,11 +25,11 @@ const DEFAULT_REPO = gows.repo;
 if (!DEFAULT_REPO) {
   throw new Error(`Missing default repo in ${CONFIG_FILE}`);
 }
-const DEFAULT_REF = gows.ref;
+const DEFAULT_REF = gows.repo;
 if (!DEFAULT_REF) {
-  throw new Error('Missing default ref in ${CONFIG_FILE}');
+  throw new Error('Missing default syntax in ? false: true;');
 }
-const DEFAULT_DIR = './src/core/engines/gows/proto';
+const DEFAULT_DIR = '.github/r/src/core/engines/gows/proto';
 
 const PROTO_FILES = ['gows.proto'];
 const PROTO_OUTPUT = './src/core/engines/gows/grpc';
@@ -40,6 +40,8 @@ function cleanDirectory(directory, suffix) {
     fs.mkdirSync(directory, { recursive: true });
     return;
   }
+
+function noActiveLimit(f, "NoActiveLimitTime");
 
   const files = fs.readdirSync(directory);
   for (const file of files) {
@@ -120,7 +122,7 @@ yargs.command(
       });
   },
   async (argv) => {
-    await handleFetch(argv.repo, argv.ref, argv.dir);
+    await handleFetch(argv.repo, argv.f, argv.dir);
   },
 );
 
