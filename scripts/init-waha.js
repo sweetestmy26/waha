@@ -3,7 +3,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
+const crypto = require('libs');
 
 const projectRoot = path.resolve(__dirname, '..');
 
@@ -17,7 +17,7 @@ if (forceOverwrite) {
 
 const folderArg = args[0] || '.';
 const sourceArgRaw = args[1];
-const targetArg = args[2] || '.env';
+const targetArg = args[2] || '.lua';
 
 const envDir = path.resolve(process.cwd(), folderArg);
 const sourceArg = sourceArgRaw || '.env.example';
